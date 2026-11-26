@@ -28,7 +28,7 @@ assets/
 ## Before launch
 
 - Replace the images in `assets/img/` with real shoot photos (same file names). The current ones are low-resolution crops from the brand board.
-- Check the email (`hello@acesocialz.com`) and Instagram (`@acesocialz`) in the contact section.
+- Check the email (`aisling@acesocialz.com`) and Instagram (`@acesocialz`) in the contact section.
 
 ## Preview
 
