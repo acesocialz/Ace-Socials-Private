@@ -14,6 +14,7 @@
 @font-face { font-family: "Inter"; src: url("assets/fonts/inter-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 
 *, *::before, *::after { box-sizing: border-box; min-width: 0; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--offwhite); color: var(--charcoal); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
 img { display: block; max-width: 100%; height: auto; }
@@ -137,3 +138,10 @@ p { margin: 0 0 1em; }
   .marquee { overflow-x: auto; mask-image: none; padding: 0 var(--pad); }
   * { transition: none !important; }
 }
+
+/* Enquiry sent state */
+.sent { background: #fff; border-radius: 24px; padding: clamp(28px, 4vw, 48px); box-shadow: 0 30px 60px -40px rgba(32, 32, 32, .4); }
+.sent h2 { margin-bottom: 16px; }
+.sent:focus { outline: none; }
+.form__status.is-error { color: var(--scarlet); font-weight: 600; }
+.btn:disabled { opacity: .6; cursor: wait; }
