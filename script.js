@@ -31,7 +31,8 @@ if (form) {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error('send failed');
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || 'send failed');
       showSent();
     } catch {
       status.textContent = 'Sorry, that didn’t send. Please try again, or email aisling@acesocialz.com.';
