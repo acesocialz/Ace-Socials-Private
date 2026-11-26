@@ -37,11 +37,3 @@ document.querySelectorAll('[data-copy]').forEach((btn) => {
 // Footer year
 document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-// Work galleries: show each photo once it exists, otherwise keep the placeholder tile
-document.querySelectorAll('.ph[data-src]').forEach((tile) => {
-  const img = new Image();
-  img.alt = tile.dataset.alt || '';
-  img.loading = 'lazy';
-  img.onload = () => { tile.querySelector('span')?.remove(); tile.appendChild(img); };
-  img.src = tile.dataset.src;
-});
