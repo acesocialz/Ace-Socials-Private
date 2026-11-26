@@ -14,7 +14,7 @@
   <meta property="og:description" content="Tell us about you and your brand, and we'll get back to you.">
   <meta property="og:image" content="https://acesocialz.com/assets/work/lifestyle/skyline-window.jpg">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../styles.css?v=4">
+  <link rel="stylesheet" href="../styles.css?v=5">
 </head>
 <body>
   <header class="top">
@@ -33,11 +33,12 @@
       <p class="direct">Prefer email? <a href="mailto:aisling@acesocialz.com">aisling@acesocialz.com</a></p>
     </div>
 
-    <form class="form" id="enquiry" action="https://formsubmit.co/aisling@acesocialz.com" method="POST">
-      <input type="hidden" name="_subject" value="New enquiry from acesocialz.com">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://acesocialz.com/thanks/">
-      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <form class="form" id="enquiry" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="14f0661f-6eea-4060-8896-63cb821733d7">
+      <input type="hidden" name="subject" value="New enquiry from acesocialz.com">
+      <input type="hidden" name="from_name" value="AceSocialz website">
+      <input type="hidden" name="redirect" value="https://acesocialz.com/thanks/">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <label for="name">Name</label>
       <input id="name" name="name" type="text" autocomplete="name" required>
@@ -67,6 +68,6 @@
     <p><a href="mailto:aisling@acesocialz.com">aisling@acesocialz.com</a> · <a href="https://www.instagram.com/acesocialz/" rel="noopener">@acesocialz</a></p>
     <p>© <span data-year>2026</span> AceSocialz · Dubai, UAE</p>
   </footer>
-  <script src="../script.js?v=4" defer></script>
+  <script src="../script.js?v=5" defer></script>
 </body>
 </html>

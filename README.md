@@ -9,7 +9,7 @@ Landing page for AceSocialz, a UAE content studio for founders, executives and p
 ```
 index.html               Home: intro, what we do, reviews slider
 work/index.html          Projects gallery with filters
-work-with-us/index.html  Enquiry form (sends to aisling@acesocialz.com via FormSubmit)
+work-with-us/index.html  Enquiry form (sends via Web3Forms to the email on the Web3Forms account)
 thanks/index.html        Shown after an enquiry is sent
 styles.css, script.js    Shared styles and the gallery filter
 assets/work/<project>/   Project photos (resized to 1600px, metadata stripped)

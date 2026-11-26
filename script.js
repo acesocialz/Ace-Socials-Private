@@ -12,32 +12,42 @@ filterBtns.forEach((btn) => {
 // Footer year
 document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-// Enquiry form: send in the background and show a thank-you message on the same page
+// Enquiry form: send in the background (Web3Forms) and show a thank-you on the same page.
+// Never hangs: gives up after 12 seconds and offers email instead.
 const form = document.getElementById('enquiry');
 if (form) {
   const status = form.querySelector('.form__status');
   const btn = form.querySelector('button[type="submit"]');
   const sent = document.getElementById('sent');
   const showSent = () => { form.hidden = true; sent.hidden = false; sent.focus(); };
+  const fail = () => {
+    status.innerHTML = 'Sorry, that didn\u2019t go through. Please try again, or email <a href="mailto:aisling@acesocialz.com">aisling@acesocialz.com</a>.';
+    status.classList.add('is-error');
+    btn.disabled = false; btn.textContent = 'Send enquiry';
+  };
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (form._honey.value) { showSent(); return; } // spam bot filled the hidden field
-    btn.disabled = true; btn.textContent = 'Sending…';
+    if (form.botcheck.checked) { showSent(); return; } // spam bot ticked the hidden box
+    btn.disabled = true; btn.textContent = 'Sending\u2026';
+    status.classList.remove('is-error'); status.textContent = '';
     const data = Object.fromEntries(new FormData(form));
-    delete data._next;
+    delete data.redirect; delete data.botcheck;
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 12000);
     try {
-      const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(data),
+        signal: ctl.signal,
       });
       const out = await res.json().catch(() => ({}));
-      if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || 'send failed');
+      if (!res.ok || out.success !== true) throw new Error(out.message || 'send failed');
       showSent();
     } catch {
-      status.textContent = 'Sorry, that didn’t send. Please try again, or email aisling@acesocialz.com.';
-      status.classList.add('is-error');
-      btn.disabled = false; btn.textContent = 'Send enquiry';
+      fail();
+    } finally {
+      clearTimeout(timer);
     }
   });
 }
