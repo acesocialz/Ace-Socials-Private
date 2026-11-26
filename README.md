@@ -4,17 +4,19 @@
 
 Landing page for AceSocialz, a UAE content studio for founders, executives and personal brands. Plain HTML, CSS and a little JavaScript. No build step, no dependencies.
 
-## Files
+## Pages
 
 ```
-index.html     Page content
-styles.css     Brand tokens (top of file), layout, responsive rules
-script.js      Mobile menu, house-style switcher, copy-email button
-assets/
-  fonts/       Inter Tight (headlines) and Inter (body), self-hosted
-  img/         Photography (placeholders, see below)
-  favicon.svg  "A." icon
+index.html               Home: intro, what we do, reviews slider
+work/index.html          Projects gallery with filters
+work-with-us/index.html  Enquiry form (sends to aisling@acesocialz.com via FormSubmit)
+thanks/index.html        Shown after an enquiry is sent
+styles.css, script.js    Shared styles and the gallery filter
+assets/work/<project>/   Project photos (resized to 1600px, metadata stripped)
 ```
+
+To add a project photo: drop it in `assets/work/<project>/` and add a `<figure class="item" data-cat="...">` to `work/index.html`.
+The reviews on the home page are placeholders; replace the text in the `.review` blocks (both copies) with real ones.
 
 ## Brand
 
